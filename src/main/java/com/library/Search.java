@@ -1,7 +1,5 @@
 package main.java.com.library;
-
 public class Search {
-
     public static void search(){
         int count = 0;
         System.out.printf("찾으시는 책을 검색해주세요%n검색 : ");
