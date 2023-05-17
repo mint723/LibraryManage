@@ -1,10 +1,10 @@
 package main;
-import static main.java.com.library.Start.start;
+import main.java.com.library.Start;
+
 public class Main {
     public static void main(String[] args) {
-
-        start();
-
+        Start start = new Start();
+        start.start();
     }
 
 }

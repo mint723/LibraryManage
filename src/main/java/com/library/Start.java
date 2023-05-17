@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import static main.java.com.library.Book.*;
 import static main.java.com.library.Search.search;
-import static main.java.com.library.RentalAndReturn.rentalAndRetrun;
+import static main.java.com.library.RentalAndReturn.rentalAndReturn;
 import static main.java.com.library.ChangeInfo.changeInfo;
 public class Start {
-    public static ArrayList<Book> bookCase = new ArrayList<>();
+//    static ArrayList<Book> bookCase = new ArrayList<>();
+    BookCase bookCase = new BookCase();
     static Scanner sc = new Scanner(System.in);
-    static int select=0;
-    static public void start() {
-        while(select != 7) {
+    public void start() {
+        while(true) {
             System.out.println("******************************");
             System.out.printf("%17s%n","*1.도서 등록*");
             System.out.printf("%17s%n","*2.도서 삭제*");
@@ -19,36 +19,43 @@ public class Start {
             System.out.printf("%17s%n","*4.도서 목록*");
             System.out.printf("%17s%n","*5.도서 대여 및 반납*");
             System.out.printf("%17s%n","*6.도서 정보 변경*");
-            System.out.printf("%17s%n","*7.종료*");
+            System.out.printf("%17s%n","*7.책장 추가*");
+            System.out.printf("%17s%n","*8.종료*");
             System.out.println("******************************");
-            select = sc.nextInt();
-            switch (select) {
+            switch (sc.nextInt()) {
                 case 1:
-                    addBook();
+                    sc.nextLine();
+                    System.out.println("등록할 책의 제목을 입력해주세요");
+                    String bookName=sc.nextLine();
+                    this.bookCase.addBook(bookName);
                     break;
                 case 2:
-                    deleteBook();
+                    System.out.println("삭제하실 책의 번호를 입력해주세요");
+                    sc.nextLine();
+                    bookCase.deleteBook(sc.nextInt());
                     break;
                 case 3:
-                    search();
+                    search(bookCase);
                     break;
                 case 4:
-                    bookList();
+                    bookList(bookCase);
                     break;
                 case 5:
-                    rentalAndRetrun();
+                    rentalAndReturn(bookCase);
                     break;
                 case 6:
-                    changeInfo();
+                    changeInfo(bookCase);
                     break;
                 case 7:
-                    System.out.println("프로그램을 종료합니다.");
+                    BookCase bookCase = new BookCase();
                     break;
+                case 8:
+                    System.out.println("프로그램을 종료합니다.");
+                    return;
                 default:
                     System.out.println("제대로 된 값을 입력해주세요.");
                     break;
             }
         }
-        select = 0;
     }
 }
