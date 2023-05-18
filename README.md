@@ -11,8 +11,29 @@
 추후 책의 속성에 따라 책장별로 구분하여 알맞은 속성의 책을 BookCase에 할당하도록 하기 위해 BookCase 클래스를 생성함   
 기존 Book class에 정의 된 addBook, deleteBook 메서드의 위치가 Book class보다 BookCase class에 적합할 것으로 판단하여 해당 메서드를 BookCase 클래스의 메서드로 이전시킴   
 또한 편의 메서드를 정의함으로 기존 코드를 간소화 하도록 함   
-<div align="center">
-<img src="https://media.discordapp.net/attachments/439043226423263232/1108391837510676531/ex1.png" title="ex1" alt="ex1"></img><br/>
-<img src="https://media.discordapp.net/attachments/439043226423263232/1108391837179322439/ex2.png" title="ex1" alt="ex1"></img><br/>
-</div>
+#### [RentalAndReturn.java](https://github.com/mint723/LibraryManage/blob/master/src/main/java/com/library/RentalAndReturn.java)
+```ruby
+if((index)==bookCase.getBookNo(i)) {
+   if(bookCase.getCanRental(i)) {
+      System.out.printf("%d번 책 (%s)을 대여처리 했습니다.%n",bookCase.getBookNo(i),bookCase.getBookName(i));
+      bookCase.setCanRental(i);
+      return;
+   }
+}
+```
+#### [BookCase.java](https://github.com/mint723/LibraryManage/blob/master/src/main/java/com/library/BookCase.java)
+```ruby
+    String getBookName(int i){
+        return this.getBookCase().get(i).getBookName();
+    }
+    int getBookNo(int i){
+        return this.getBookCase().get(i).getBookNo();
+    }
+    boolean getCanRental(int i){
+        return this.getBookCase().get(i).getCanRental();
+    }
+    boolean setCanRental(int i){
+        return this.getBookCase().get(i).setCanRental();
+    }
+```
 
