@@ -13,7 +13,7 @@
 기존 Book class에 정의 된 addBook, deleteBook 메서드의 위치가 Book class보다 BookCase class에 적합할 것으로 판단하여 해당 메서드를 BookCase 클래스의 메서드로 이전시킴   
 또한 편의 메서드를 정의함으로 기존 코드를 간소화 하도록 함   
 
-### RentalAndReturn.class
+### RentalAndReturn.java
 ```ruby
 if((index)==bookCase.getBookNo(i)) {
    if(bookCase.getCanRental(i)) {
@@ -23,7 +23,7 @@ if((index)==bookCase.getBookNo(i)) {
    }
 }
 ```
-### BookCase.class
+### BookCase.java
 ```ruby
     String getBookName(int i){
         return this.getBookCase().get(i).getBookName();
@@ -82,7 +82,7 @@ public static void search(BookCase bookCase){ ... }
 public static void search(BookCaseType bookCase){ ... }
 ```
 
-### ChangeBookCase.class
+### ChangeBookCase.java
 ChangeBookCase class추가, 다른 책장으로 해당 책을 옮길 수 있도록 하는 method 구현
 ```ruby
 switch (select){
@@ -104,7 +104,7 @@ switch (select){
                 ...
 ```
 
-### ChangeInfo.class
+### ChangeInfo.java
 changeType method 추가, 선택한 책의 종류를 수정할 수 있도록 구성함, 이후 바로 changeBookCase method를 불러와 수정한 책에 종류에 맞는 책장에 책을 보관함
 ```ruby
  private static void changeType(BookCaseType bookCase, int i, BookCaseType none, BookCaseType comic, BookCaseType novel){
@@ -134,7 +134,7 @@ changeType method 추가, 선택한 책의 종류를 수정할 수 있도록 구
 마지막으로 전체적으로 메서드의 모듈화를 진행하여 코드의 가독성을 높일 수 있도록 노력함
 
 예시)
-### Start.class - start method
+### Start.java - start method
 ```ruby
 ...
  switch (sc.nextInt()){
@@ -154,7 +154,7 @@ changeType method 추가, 선택한 책의 종류를 수정할 수 있도록 구
             ...
 ```
 
-### ChangeInfo.class - changeInfo method
+### ChangeInfo.java - changeInfo method
 ```ruby
 ...
 switch (num){
