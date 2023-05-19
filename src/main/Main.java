@@ -6,5 +6,4 @@ public class Main {
         Start start = new Start();
         start.start();
     }
-
 }

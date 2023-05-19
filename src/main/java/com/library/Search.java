@@ -1,6 +1,9 @@
 package main.java.com.library;
+
+import main.java.com.library.bookcasetype.BookCaseType;
+
 public class Search {
-    public static void search(BookCase bookCase){
+    public static void search(BookCaseType bookCase){
         int count = 0;
         System.out.printf("찾으시는 책을 검색해주세요%n검색 : ");
         Start.sc.nextLine();
