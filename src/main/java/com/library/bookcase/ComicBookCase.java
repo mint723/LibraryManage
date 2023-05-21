@@ -1,18 +1,29 @@
-package main.java.com.library.bookcasetype;
+package main.java.com.library.bookcase;
 
-import main.java.com.library.Book;
+import main.java.com.library.book.Book;
+import main.java.com.library.book.ComicBook;
 
 import java.util.ArrayList;
 
-public class Comic implements BookCaseType {
+public class ComicBookCase implements BookCaseType {
     private ArrayList<Book> comic = new ArrayList<>();
+
+//    public void bookList(){
+//        if(comic.size()==0){
+//            System.out.println("책이 존재하지 않습니다");
+//        }
+//        else{
+//            comic.get(0).bookList(comic);
+//        }
+//    };
+
     public void thisType() {
         System.out.printf("%15s%n","*만화책*");
     }
     public Book getBook(int i){ return this.comic.get(i); }
 
     public void addBook(String bookName){
-        this.comic.add(new Book(bookName,"만화책"));
+        this.comic.add(new ComicBook(bookName,"만화책"));
     }
     public void addBookObject(Book book){
         this.comic.add(book);

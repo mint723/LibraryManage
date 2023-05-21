@@ -1,20 +1,21 @@
 package main.java.com.library;
 
-import main.java.com.library.bookcasetype.None;
-import main.java.com.library.bookcasetype.Comic;
-import main.java.com.library.bookcasetype.Novel;
-import main.java.com.library.bookcasetype.BookCaseType;
+import main.java.com.library.book.Book;
+import main.java.com.library.bookcase.NoneBookCase;
+import main.java.com.library.bookcase.ComicBookCase;
+import main.java.com.library.bookcase.NovelBookCase;
+import main.java.com.library.bookcase.BookCaseType;
 
 import java.util.Scanner;
-import static main.java.com.library.Book.*;
+
 import static main.java.com.library.Search.search;
 import static main.java.com.library.RentalAndReturn.rentalAndReturn;
 import static main.java.com.library.ChangeInfo.changeInfo;
 public class Start {
-    static Scanner sc = new Scanner(System.in);
-    None none = new None();
-    Comic comic = new Comic();
-    Novel novel = new Novel();
+    static Scanner SC = new Scanner(System.in);
+    NoneBookCase noneBookCase = new NoneBookCase();
+    ComicBookCase comicBookCase = new ComicBookCase();
+    NovelBookCase novelBookCase = new NovelBookCase();
     public void start() {
         while(true) {
             System.out.println("관리할 책장을 선택해주세요");
@@ -24,15 +25,15 @@ public class Start {
             System.out.printf("%17s%n","*3.소설*");
             System.out.printf("%17s%n","*4.종료*");
             System.out.println("******************************");
-            switch (sc.nextInt()){
+            switch (SC.nextInt()){
                 case 1:
-                    startMethod(this.none);
+                    startMethod(this.noneBookCase);
                 break;
                 case 2:
-                    startMethod(this.comic);
+                    startMethod(this.comicBookCase);
                 break;
                 case 3:
-                    startMethod(this.novel);
+                    startMethod(this.novelBookCase);
                 break;
                 case 4:
                     System.out.println("프로그램을 종료합니다.");
@@ -53,19 +54,19 @@ public class Start {
                 System.out.printf("%17s%n","*6.도서 정보 변경*");
                 System.out.printf("%17s%n","*7.나가기*");
                 System.out.println("******************************");
-                switch (sc.nextInt()) {
+                switch (SC.nextInt()) {
                     case 1:
                         bookCase.thisType();
-                        sc.nextLine();
+                        SC.nextLine();
                         System.out.println("등록할 책의 제목을 입력해주세요");
-                        String bookName=sc.nextLine();
+                        String bookName= SC.nextLine();
                         bookCase.addBook(bookName);
                         break;
                     case 2:
                         bookCase.thisType();
                         System.out.println("삭제하실 책의 번호를 입력해주세요");
-                        sc.nextLine();
-                        bookCase.deleteBook(sc.nextInt());
+                        SC.nextLine();
+                        bookCase.deleteBook(SC.nextInt());
                         break;
                     case 3:
                         bookCase.thisType();
@@ -73,7 +74,8 @@ public class Start {
                         break;
                     case 4:
                         bookCase.thisType();
-                        bookList(bookCase);
+//                        bookList(bookCase);
+                        bookCase.getBook(0).bookList(bookCase);
                         break;
                     case 5:
                         bookCase.thisType();
@@ -81,7 +83,8 @@ public class Start {
                         break;
                     case 6:
                         bookCase.thisType();
-                        changeInfo(bookCase,none,comic,novel);
+                        changeInfo(bookCase, noneBookCase, comicBookCase, novelBookCase);
+//                        changeInfo(BookCase bookCase//추상클래스);
                         break;
                     case 7:
                         System.out.println("책장 선택 화면으로 이동합니다.");

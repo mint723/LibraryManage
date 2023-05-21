@@ -1,17 +1,18 @@
-package main.java.com.library.bookcasetype;
+package main.java.com.library.bookcase;
 
-import main.java.com.library.Book;
+import main.java.com.library.book.Book;
+import main.java.com.library.book.NovelBook;
 
 import java.util.ArrayList;
 
-public class Novel implements BookCaseType {
+public class NovelBookCase implements BookCaseType {
     private ArrayList<Book> novel = new ArrayList<>();
     public void thisType() {
         System.out.printf("%15s%n","*소설*");
     }
     public Book getBook(int i){ return this.novel.get(i); }
     public void addBook(String bookName){
-        this.novel.add(new Book(bookName,"소설"));
+        this.novel.add(new NovelBook(bookName,"소설"));
     }
     public void addBookObject(Book book){
         this.novel.add(book);

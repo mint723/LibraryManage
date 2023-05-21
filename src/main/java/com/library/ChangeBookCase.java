@@ -1,6 +1,6 @@
 package main.java.com.library;
 
-import main.java.com.library.bookcasetype.BookCaseType;
+import main.java.com.library.bookcase.BookCaseType;
 
 public class ChangeBookCase {
     public static void changeBookCase(BookCaseType none, BookCaseType comic, BookCaseType novel, int i, int select, String previous){

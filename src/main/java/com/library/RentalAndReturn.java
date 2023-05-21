@@ -1,30 +1,34 @@
 package main.java.com.library;
 
-import main.java.com.library.bookcasetype.BookCaseType;
+import main.java.com.library.book.Book;
+import main.java.com.library.bookcase.BookCaseType;
 
 public class RentalAndReturn {
-    RentalAndReturn(BookCaseType bookcase){
-        Book.bookList(bookcase);
+    RentalAndReturn(BookCaseType bookCase){
+//        Book.bookList(bookcase);
+        bookCase.getBook(0).bookList(bookCase);
     }
+
     public static void rentalAndReturn(BookCaseType bookCase) {
         System.out.printf("번호를 입력해주세요%n1.대여%n2.반납%n");
-        int choose = Start.sc.nextInt();
+        int choose = Start.SC.nextInt();
         int index;
         switch (choose) {
             case 1:
                 System.out.println("대여할 책의 번호를 입력해주세요");
-                index = Start.sc.nextInt();
+                index = Start.SC.nextInt();
                 rentalBook(bookCase,index);
                 break;
             case 2:
                 System.out.println("반납할 책의 번호를 입력해주세요");
-                index = Start.sc.nextInt();
+                index = Start.SC.nextInt();
                 returnBook(bookCase,index);
             default:
                 System.out.println("제대로 된 값을 입력해주세요.");
                 break;
         }
     }
+
     private static void rentalBook(BookCaseType bookCase, int index){
         for (int i = 0; i < bookCase.getBookCase().size(); i++) {
             if((index)==bookCase.getBookNo(i)) {
