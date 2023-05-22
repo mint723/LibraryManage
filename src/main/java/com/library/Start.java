@@ -1,17 +1,16 @@
 package main.java.com.library;
 
 import main.java.com.library.book.Book;
-import main.java.com.library.bookcase.NoneBookCase;
-import main.java.com.library.bookcase.ComicBookCase;
-import main.java.com.library.bookcase.NovelBookCase;
-import main.java.com.library.bookcase.BookCaseType;
+import main.java.com.library.bookcase.*;
 
 import java.util.Scanner;
 
 import static main.java.com.library.Search.search;
 import static main.java.com.library.RentalAndReturn.rentalAndReturn;
-import static main.java.com.library.ChangeInfo.changeInfo;
+//import static main.java.com.library.ChangeInfo.changeInfo;
 public class Start {
+    BookCaseManagement bookCaseManagement = new BookCaseManagement();
+    ChangeInfo changeInfo = new ChangeInfo();
     static Scanner SC = new Scanner(System.in);
     NoneBookCase noneBookCase = new NoneBookCase();
     ComicBookCase comicBookCase = new ComicBookCase();
@@ -42,7 +41,7 @@ public class Start {
         }
     }
 
-    private void startMethod(BookCaseType bookCase){
+    private void startMethod(BookCase bookCase){
         while(true){
                 bookCase.thisType();
                 System.out.println("******************************");
@@ -74,8 +73,12 @@ public class Start {
                         break;
                     case 4:
                         bookCase.thisType();
-//                        bookList(bookCase);
-                        bookCase.getBook(0).bookList(bookCase);
+                        if (bookCase.getBookCase().size()!=0){
+                            bookCase.bookList();
+                        }
+                        else{
+                            System.out.printf("%n%n%n%17s%n%n%n%n","등록된 책이 없습니다.");
+                        }
                         break;
                     case 5:
                         bookCase.thisType();
@@ -83,7 +86,7 @@ public class Start {
                         break;
                     case 6:
                         bookCase.thisType();
-                        changeInfo(bookCase, noneBookCase, comicBookCase, novelBookCase);
+                        this.changeInfo.changeInfo(bookCase, noneBookCase, comicBookCase, novelBookCase);
 //                        changeInfo(BookCase bookCase//추상클래스);
                         break;
                     case 7:

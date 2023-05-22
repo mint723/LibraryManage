@@ -1,15 +1,13 @@
 package main.java.com.library;
 
-import main.java.com.library.book.Book;
-import main.java.com.library.bookcase.BookCaseType;
+import main.java.com.library.bookcase.*;
 
 public class RentalAndReturn {
-    RentalAndReturn(BookCaseType bookCase){
-//        Book.bookList(bookcase);
-        bookCase.getBook(0).bookList(bookCase);
+    RentalAndReturn(BookCase bookCase){
+        bookCase.bookList();
     }
 
-    public static void rentalAndReturn(BookCaseType bookCase) {
+    public static void rentalAndReturn(BookCase bookCase) {
         System.out.printf("번호를 입력해주세요%n1.대여%n2.반납%n");
         int choose = Start.SC.nextInt();
         int index;
@@ -29,7 +27,7 @@ public class RentalAndReturn {
         }
     }
 
-    private static void rentalBook(BookCaseType bookCase, int index){
+    private static void rentalBook(BookCase bookCase, int index){
         for (int i = 0; i < bookCase.getBookCase().size(); i++) {
             if((index)==bookCase.getBookNo(i)) {
                 if(bookCase.getCanRental(i)) {
@@ -44,7 +42,7 @@ public class RentalAndReturn {
         }
     }
 
-    private static void returnBook(BookCaseType bookCase, int index){
+    private static void returnBook(BookCase bookCase, int index){
         for (int i = 0; i < bookCase.getBookCase().size(); i++) {
             if((index)==bookCase.getBookNo(i)) {
                 if(!bookCase.getCanRental(i)) {
