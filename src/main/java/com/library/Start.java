@@ -1,21 +1,16 @@
 package main.java.com.library;
-
-import main.java.com.library.book.Book;
 import main.java.com.library.bookcase.*;
-
 import java.util.Scanner;
 
 import static main.java.com.library.Search.search;
 import static main.java.com.library.RentalAndReturn.rentalAndReturn;
-//import static main.java.com.library.ChangeInfo.changeInfo;
 public class Start {
-    BookCaseManagement bookCaseManagement = new BookCaseManagement();
     ChangeInfo changeInfo = new ChangeInfo();
     static Scanner SC = new Scanner(System.in);
-    NoneBookCase noneBookCase = new NoneBookCase();
-    ComicBookCase comicBookCase = new ComicBookCase();
-    NovelBookCase novelBookCase = new NovelBookCase();
     public void start() {
+        BookCaseManagement.getInstance().addBookCase(new NoneBookCase());
+        BookCaseManagement.getInstance().addBookCase(new ComicBookCase());
+        BookCaseManagement.getInstance().addBookCase(new NovelBookCase());
         while(true) {
             System.out.println("관리할 책장을 선택해주세요");
             System.out.println("******************************");
@@ -26,13 +21,13 @@ public class Start {
             System.out.println("******************************");
             switch (SC.nextInt()){
                 case 1:
-                    startMethod(this.noneBookCase);
+                    startMethod(BookCaseManagement.getInstance().getBookCase(1));
                 break;
                 case 2:
-                    startMethod(this.comicBookCase);
+                    startMethod(BookCaseManagement.getInstance().getBookCase(2));
                 break;
                 case 3:
-                    startMethod(this.novelBookCase);
+                    startMethod(BookCaseManagement.getInstance().getBookCase(3));
                 break;
                 case 4:
                     System.out.println("프로그램을 종료합니다.");
@@ -86,8 +81,7 @@ public class Start {
                         break;
                     case 6:
                         bookCase.thisType();
-                        this.changeInfo.changeInfo(bookCase, noneBookCase, comicBookCase, novelBookCase);
-//                        changeInfo(BookCase bookCase//추상클래스);
+                        this.changeInfo.changeInfo(bookCase, BookCaseManagement.getInstance().getBookCase(1), BookCaseManagement.getInstance().getBookCase(2), BookCaseManagement.getInstance().getBookCase(3));
                         break;
                     case 7:
                         System.out.println("책장 선택 화면으로 이동합니다.");

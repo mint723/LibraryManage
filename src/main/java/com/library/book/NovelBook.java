@@ -2,8 +2,8 @@ package main.java.com.library.book;
 
 
 public class NovelBook extends Book{
-    public NovelBook(String name, String bookType) {
-        super(name, bookType);
+    public NovelBook(String BookName, String bookType) {
+        super(BookName, bookType);
     }
 
     public void bookInfo() {

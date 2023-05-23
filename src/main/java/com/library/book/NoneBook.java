@@ -2,8 +2,8 @@ package main.java.com.library.book;
 
 
 public class NoneBook extends Book {
-    public NoneBook(String name, String bookType) {
-        super(name,"분류 없음");
+    public NoneBook(String BookName) {
+        super(BookName,"분류 없음");
     }
 
     public void bookInfo() {

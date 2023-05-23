@@ -8,9 +8,9 @@ abstract public class Book {
     private Boolean canRental;
     private String bookType;
 
-    public Book(String name, String bookType){
+    public Book(String BookName, String bookType){
         this.bookNo = ++count;
-        this.bookName = name;
+        this.bookName = BookName;
         this.canRental = true;
         this.bookType = bookType;
     }

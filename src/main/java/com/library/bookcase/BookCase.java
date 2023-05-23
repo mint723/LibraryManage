@@ -1,7 +1,6 @@
 package main.java.com.library.bookcase;
 
 import main.java.com.library.book.Book;
-import main.java.com.library.book.NoneBook;
 
 import java.util.ArrayList;
 
@@ -16,9 +15,8 @@ abstract public class BookCase {
     BookCase(){
         this("분류 없음");
     }
-    private String bookCaseType = ""; // 추후 책장 추가 시 생성자를 통해 책장 종류 받음
-    //이후 북을 생성할 때 bookCaseType 통해 Book 객체를 추가할 때 Book 타입을 추가함
 
+    private String bookCaseType = "";
 
     abstract public void thisType();
 
@@ -29,17 +27,7 @@ abstract public class BookCase {
     }
 
 
-
-
-
-
-    public Book getBook(int index){ return this.bookCase.get(index); }
-
     abstract public void addBook(String bookName);
-
-    public void addBookObject(Book book){
-        this.bookCase.add(book);
-    }
 
     public void deleteBook(int index) {
         for (int i = 0; i < this.getBookCase().size(); i++) {
@@ -49,6 +37,16 @@ abstract public class BookCase {
                 return;
             }
         }
+    }
+
+
+
+
+
+    public Book getBook(int index){ return this.bookCase.get(index); }
+
+    public void addBookObject(Book book){
+        this.bookCase.add(book);
     }
 
     public ArrayList<Book> getBookCase() {

@@ -2,8 +2,6 @@ package main.java.com.library.bookcase;
 
 import main.java.com.library.book.NovelBook;
 
-import java.util.ArrayList;
-
 public class NovelBookCase extends BookCase {
 
     public void thisType() {
