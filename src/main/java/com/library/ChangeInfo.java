@@ -2,8 +2,7 @@ package main.java.com.library;
 
 import main.java.com.library.bookcase.*;
 public class ChangeInfo {
-    //매개변수를 북케이스매니지먼트로 받으면 책장들을 스태틱으로 선언하지 않아도 사용할 수 있을것으로 예상
-    public void changeInfo(BookCase bookCase, BookCase none, BookCase comic, BookCase novel){
+    public void changeInfo(BookCase bookCase){
         bookCase.bookList();
         System.out.println("어떤 책의 정보를 변경하시겠습니까? 책의 번호를 입력해주세요 : ");
         int select = Start.SC.nextInt();
@@ -19,7 +18,7 @@ public class ChangeInfo {
                         changeBookNo(bookCase, index);
                         break;
                     case 3:
-                        changeType(bookCase,index,none,comic,novel);
+                        changeType(bookCase,index);
                         break;
                     default:
                         System.out.println("제대로 된 값을 입력해주세요");
@@ -44,88 +43,26 @@ public class ChangeInfo {
         bookCase.getBookCase().get(index).setBookNo(bookNum);
     }
 
-//    private void changeType(BookCase bookCase, int bookIndex){
-//        System.out.printf("책의 종류를 %s에서 무엇로 변경하시겠습니까?%n번호로 입력해주세요.%n1.분류 없음%n2.만화책%n3.소설%n",bookCase.getBookType(bookIndex));
-//        int select = Start.SC.nextInt();
-//        switch (select){
-//            case 1:
-//                changeBookType(NoneBookCase.class.getTypeName(), bookCase, bookIndex);
-//                break;
-//            case 2:
-//                changeBookType(ComicBookCase.class.getTypeName(), bookCase, bookIndex);
-//                break;
-//            case 3:
-//                changeBookType(NovelBookCase.class.getTypeName(), bookCase, bookIndex);
-//                break;
-//        }
-//    }
-    private void changeType(BookCase bookCase, int bookIndex, BookCase none, BookCase comic, BookCase novel){
+    private void changeType(BookCase bookCase, int bookIndex){
         System.out.printf("책의 종류를 %s에서 무엇로 변경하시겠습니까?%n번호로 입력해주세요.%n1.분류 없음%n2.만화책%n3.소설%n",bookCase.getBookType(bookIndex));
         String previous = bookCase.getBookType(bookIndex);
         int select = Start.SC.nextInt();
         switch (select){
             case 1:
-                System.out.printf("책의 종류가 %s에서 %s로 변경되었습니다%n",bookCase.getBookType(bookIndex),"분류 없음");//모듈화
+                System.out.printf("책의 종류가 %s에서 %s로 변경되었습니다%n",bookCase.getBookType(bookIndex),"분류 없음");
                 bookCase.setBookType(bookIndex,"분류 없음");
-
+                BookCaseManagement.getInstance().changeBookCase("NoneBookCase",bookCase,bookIndex);
                 break;
             case 2:
                 System.out.printf("책의 종류가 %s에서 %s로 변경되었습니다%n",bookCase.getBookType(bookIndex),"만화책");
                 bookCase.setBookType(bookIndex,"만화책");
+                BookCaseManagement.getInstance().changeBookCase("ComicBookCase",bookCase,bookIndex);
                 break;
             case 3:
                 System.out.printf("책의 종류가 %s에서 %s로 변경되었습니다%n",bookCase.getBookType(bookIndex),"소설");
                 bookCase.setBookType(bookIndex,"소설");
+                BookCaseManagement.getInstance().changeBookCase("NovelBookCase",bookCase,bookIndex);
                 break;
         }
-        changeBookCase(none,comic,novel, bookIndex, select, previous);
     }
-
-private void changeBookCase(BookCase none, BookCase comic, BookCase novel, int i, int select, String previous){
-    switch (select){
-        case 1:
-            if (previous.equals("분류 없음")){
-                none.addBookObject(none.getBook(i));
-                none.deleteBook(none.getBookNo(i));
-            }
-            else if(previous.equals("만화책")){
-                none.addBookObject(comic.getBook(i));
-                comic.deleteBook(comic.getBookNo(i));
-            }
-            else if(previous.equals("소설")){
-                none.addBookObject(novel.getBook(i));
-                novel.deleteBook(novel.getBookNo(i));
-            }
-
-            break;
-        case 2:
-            if (previous.equals("분류 없음")){
-                comic.addBookObject(none.getBook(i));
-                none.deleteBook(none.getBookNo(i));
-            }
-            else if(previous.equals("만화책")){
-                comic.addBookObject(comic.getBook(i));
-                comic.deleteBook(comic.getBookNo(i));
-            }
-            else if(previous.equals("소설")){
-                comic.addBookObject(novel.getBook(i));
-                novel.deleteBook(novel.getBookNo(i));
-            }
-            break;
-        case 3:
-            if (previous.equals("분류 없음")){
-                novel.addBookObject(none.getBook(i));
-                none.deleteBook(none.getBookNo(i));
-            }
-            else if(previous.equals("만화책")){
-                novel.addBookObject(comic.getBook(i));
-                comic.deleteBook(comic.getBookNo(i));
-            }
-            else if(previous.equals("소설")){
-                novel.addBookObject(novel.getBook(i));
-                novel.deleteBook(novel.getBookNo(i));
-            }
-            break;
-    }
-}
 }
