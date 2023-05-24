@@ -30,9 +30,16 @@ public class BookCaseManagement {
         System.out.printf("%d번 책장 : %s",bookCaseNo,getBookCase(bookCaseNo));
     }
 
-    public BookCase getBookCase(int BookCaseNo){
-        return this.bookCaseCollection.get(BookCaseNo-1);
+    public BookCase getBookCase(int bookCaseNo){
+        return this.bookCaseCollection.get(bookCaseNo-1);
     }
 
-
+    public void changeBookCase(String bookCaseType,BookCase bookCase, int bookIndex){
+        for (int i = 0; i < bookCaseCollection.size(); i++) {
+            if(bookCaseCollection.get(i).getBookCaseTypeName().equals(bookCaseType)){
+                bookCaseCollection.get(i).addBookObject(bookCase.getBook(bookIndex));
+                bookCase.deleteBook(bookCase.getBook(bookIndex).getBookNo());
+            }
+        }
+    }
 }
