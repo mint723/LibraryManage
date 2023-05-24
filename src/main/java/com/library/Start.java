@@ -7,6 +7,7 @@ import static main.java.com.library.RentalAndReturn.rentalAndReturn;
 public class Start {
     ChangeInfo changeInfo = new ChangeInfo();
     static Scanner SC = new Scanner(System.in);
+
     public void start() {
         BookCaseManagement.getInstance().addBookCase(new NoneBookCase());
         BookCaseManagement.getInstance().addBookCase(new ComicBookCase());
@@ -81,7 +82,7 @@ public class Start {
                         break;
                     case 6:
                         bookCase.thisType();
-                        this.changeInfo.changeInfo(bookCase, BookCaseManagement.getInstance().getBookCase(1), BookCaseManagement.getInstance().getBookCase(2), BookCaseManagement.getInstance().getBookCase(3));
+                        this.changeInfo.changeInfo(bookCase);
                         break;
                     case 7:
                         System.out.println("책장 선택 화면으로 이동합니다.");
