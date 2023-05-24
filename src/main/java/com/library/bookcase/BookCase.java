@@ -29,15 +29,16 @@ abstract public class BookCase {
 
     abstract public void addBook(String bookName);
 
-    public void deleteBook(int index) {
+    public void deleteBook(int bookNo) {
         for (int i = 0; i < this.getBookCase().size(); i++) {
-            if((index)==this.getBookNo(i)) {
+            if((bookNo)==this.getBookNo(i)) {
                 System.out.printf("'%s'에서 %d번 책 (%s)이 삭제되었습니다.%n","분류 없음",this.getBookNo(i),this.getBookName(i));
                 this.getBookCase().remove(i);
                 return;
             }
         }
     }
+    //추상메서드 지정 후 각 카테고리별로 다르게 나오게 만들기
 
 
 
@@ -69,5 +70,9 @@ abstract public class BookCase {
     public String getBookType(int index){ return this.getBookCase().get(index).getBookType(); }
 
     public void setBookType(int index, String bookName){ this.getBookCase().get(index).setBookType(bookName); }
+
+    public String getBookCaseTypeName(){
+        return this.getClass().getTypeName().substring(this.getClass().getTypeName().lastIndexOf(".")+1);
+    }
 
 }
