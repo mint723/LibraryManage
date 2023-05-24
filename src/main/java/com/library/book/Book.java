@@ -2,10 +2,13 @@ package main.java.com.library.book;
 
 abstract public class Book {
     static int count;
-    //접근제한자
+
     private int bookNo;
+
     private String bookName;
+
     private Boolean canRental;
+
     private String bookType;
 
     public Book(String BookName, String bookType){
